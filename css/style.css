@@ -1,0 +1,38 @@
+table.puzzle {
+    margin: 20px;
+    float: left;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.puzzle tr {
+    height: 40px;
+}
+
+.puzzle td {
+    border: 1px solid black;
+    width: 40px;
+}
+
+td.filled {
+    background-color: grey;
+}
+
+td.solved {
+    background-color: lightgreen;
+}
+
+@media print {
+    body * {
+      visibility: hidden;
+      -webkit-print-color-adjust: exact !important;
+    }
+    #puzzles, #puzzles * {
+      visibility: visible;
+    }
+    #puzzles {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
