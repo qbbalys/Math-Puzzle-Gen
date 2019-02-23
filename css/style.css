@@ -1,35 +1,91 @@
 table.puzzle {
     margin: 20px;
-    float: left;
     border-collapse: collapse;
     text-align: center;
 }
 
 .puzzle tr {
-    height: 40px;
+    height: 25pt;
 }
 
 .puzzle td {
-    border: 1px solid black;
-    width: 40px;
+    border: 1pt solid black;
+    width: 25pt;
 }
 
 td.filled {
-    background-color: grey;
+    background-color: rgb(103,58,183);
 }
 
 td.solved {
-    background-color: lightgreen;
+    background-color: rgb(255,215,64);
+}
+
+.wrapper {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.mdl-layout__header-row {
+    padding: 0px 40px;
+}
+
+.menu {
+    margin: 10px 0px;
+    padding: 4px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.menu-section {
+    margin: 0px 4px;
+    padding: 4px;
+}
+
+.menu-label {
+    font-size: 16px;
+}
+
+.menu-section-stacked {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+ul.options {
+    list-style-type: none;
+    padding: 10px;
+    margin: 0px;
+}
+
+.mdl-switch {
+    margin: 24px;
 }
 
 @media print {
     body * {
       visibility: hidden;
-      -webkit-print-color-adjust: exact !important;
     }
     #puzzles, #puzzles * {
       visibility: visible;
     }
+
+    td.filled {
+        background-color: gray !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+    
+    td.solved {
+        background-color: lightgray !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+
     #puzzles {
       position: absolute;
       left: 0;

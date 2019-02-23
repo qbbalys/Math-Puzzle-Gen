@@ -4,15 +4,67 @@
 <head>
     <meta charset="utf-8">
     <title>Math Puzzle Generator</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-amber.min.css" />
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <button type="button" onclick="generatePuzzles()">Generuj</button>
-    <label><input id="solvedCheckbox" type="checkbox" onchange="displayPuzzles()">Pokaż rozwiązania</label>
-    <button type="button" onclick="window.print()">Drukuj</button>
-    <div id="puzzles"></div>
-    <script src="js/data.js" ></script>
+    <div class="wrapper mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">Krzyżówki matematyczne</span>
+            </div>
+        </header>
+        <div class="menu mdl-shadow--2dp">
+            <div class="menu-section">
+                <div class="menu-label">Zakres wartości:</div>
+                <ul class="options">
+                    <li>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="rangeSmall">
+                            <input type="radio" id="rangeSmall" class="mdl-radio__button" name="valueRange" value="10"
+                                checked>
+                            <span class="mdl-radio__label">mały</span>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="rangeMedium">
+                            <input type="radio" id="rangeMedium" class="mdl-radio__button" name="valueRange" value="20">
+                            <span class="mdl-radio__label">średni</span>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="rangeLarge">
+                            <input type="radio" id="rangeLarge" class="mdl-radio__button" name="valueRange" value="50">
+                            <span class="mdl-radio__label">duży</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu-section">
+                <div class="menu-label">Rozwiązania</div>
+                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="solvedCheckbox">
+                    <input type="checkbox" id="solvedCheckbox" class="mdl-switch__input" onchange="displayPuzzles()">
+                </label>
+            </div>
+            <div class="menu-section menu-section-stacked">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
+                    onclick="generatePuzzles()">
+                    Generuj
+                </button>
+            </div>
+            <div class="menu-section menu-section-stacked">
+                <button id="printBtn"
+                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                    onclick="window.print()" disabled>
+                    Drukuj
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="container wrapper mdl-shadow--2dp" id="puzzles"></div>
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="js/data.js"></script>
     <script src="js/script.js"></script>
 </body>
 

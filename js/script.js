@@ -7,12 +7,14 @@ function randomInt(min, max) { // [min, max)
 }
 
 function generatePuzzles() {
+    var range = document.querySelector('input[name="valueRange"]:checked').value
     puzzles = [];
 
-    for (var i = 0; i < 9; ++i) {
-        puzzles.push(new Puzzle(15));
+    for (var i = 0; i < 12; ++i) {
+        puzzles.push(new Puzzle(range));
     }
 
+    document.getElementById("printBtn").disabled = false;
     displayPuzzles();
 }
 
@@ -30,20 +32,24 @@ function displayPuzzles() {
 class Puzzle {
 
     constructor(maxValue) {
-        this.board = initialBoard;
+        this.board = new Array(initialBoard.length);
+        for (var i = 0; i < initialBoard.length; ++i) {
+            this.board[i] = initialBoard[i].slice();
+        }
+
         this.setupValues(maxValue);
         this.mask = masks[randomInt(0, masks.length)];
     }
 
     setupValues(maxValue) {
-        this.board[0][0] = randomInt(0, maxValue);
-        this.board[0][2] = randomInt(0, this.board[0][0]);
+        this.board[0][0] = randomInt(2, maxValue);
+        this.board[0][2] = randomInt(1, this.board[0][0] - 1);
         this.board[0][4] = this.board[0][0] - this.board[0][2];
         
         this.board[4][4] = randomInt(this.board[0][4], maxValue);
         this.board[2][4] = this.board[4][4] - this.board[0][4];
 
-        this.board[2][2] = randomInt(0, maxValue);
+        this.board[2][2] = randomInt(1, maxValue);
         this.board[2][0] = this.board[2][4] + this.board[2][2];
         this.board[4][0] = this.board[0][0] + this.board[2][0];
         this.board[4][2] = this.board[0][2] + this.board[2][2];
